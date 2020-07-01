@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -36,10 +37,26 @@ void rotate_(vector<int> &to_rotate, int d){
 }
 
 
+// Time Complexity O(n)
+// Space Complexity O(1)
+void right_rotate(vector<int> &to_rotate, int d){
+    reverse(to_rotate.begin(), to_rotate.end());
+    reverse(to_rotate.begin(), to_rotate.begin() + d);
+    reverse(to_rotate.begin() + d, to_rotate.end());
+}
+
+
+void left_rotate(vector<int> &to_rotate, int d){
+    reverse(to_rotate.begin(), to_rotate.end());
+    reverse(to_rotate.begin(), to_rotate.end() - d);
+    reverse(to_rotate.end() - d, to_rotate.end());
+}
+
+
 int main()
 {
     vector<int> to_rotate={1,2,3,4,5,6,7};
-//    rotate(to_rotate, 3);
-//    printVec(to_rotate);
-    rotate_(to_rotate,3);
+
+    left_rotate(to_rotate, 3);
+    printVec(to_rotate);
 }
