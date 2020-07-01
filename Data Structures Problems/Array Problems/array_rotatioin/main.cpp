@@ -46,6 +46,8 @@ void right_rotate(vector<int> &to_rotate, int d){
 }
 
 
+// Time Complexity O(n)
+// Space Complexity O(1)
 void left_rotate(vector<int> &to_rotate, int d){
     reverse(to_rotate.begin(), to_rotate.end());
     reverse(to_rotate.begin(), to_rotate.end() - d);
