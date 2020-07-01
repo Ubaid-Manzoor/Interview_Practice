@@ -28,13 +28,8 @@ bool pairExists_I(vector<int> arr, int sum){
 
 // Method II
 // using hash map
-//unordered_set<int> return_set(vector<int> arr){
-//    unordered_set<int> number_set;
-//    for(int num:arr)
-//        number_set.emplace(num);
-//    return number_set;
-//}
-
+// Time Complexity is O(n)
+// Space Complexity is O(n)
 bool pairExists_II(vector<int> arr, int sum){
     unordered_set<int> number_set;
 
