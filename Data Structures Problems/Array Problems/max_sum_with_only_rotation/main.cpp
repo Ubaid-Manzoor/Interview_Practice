@@ -7,6 +7,9 @@ using namespace std;
 
 // We have to Max Sum(i * arr[i]) with only rotaions on given array allowed
 
+// Time Complexity O(n)
+// Space Complexity O(1)
+
 int max_rotation_sum(vector<int> arr){
     int arr_sum = accumulate(arr.begin(),arr.end(),0);
 
