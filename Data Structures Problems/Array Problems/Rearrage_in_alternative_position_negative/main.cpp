@@ -4,6 +4,7 @@
 using namespace std;
 
 // Link of the Problem :- https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
+// Link of the Problem :- https://www.geeksforgeeks.org/rearrange-positive-and-negative-numbers-publish/
 
 void printVec(vector<int> arr){
     for(int v:arr)
