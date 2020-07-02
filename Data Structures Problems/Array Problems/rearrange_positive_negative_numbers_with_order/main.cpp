@@ -25,12 +25,13 @@ void modified_merge(vector<int> &arr, int left, int mid, int right){
         left++;
     }
 
-//    cout<<left<<" "<<mid<<" "<<right<<endl;
     rotate(arr, left, mid, right+1);
 }
 
+
+// Time Complexity O(nlogn)
+// Space Complexity O(1)
 void rearrange(vector<int> &arr, int left, int right){
-//    cout<<left<<" "<<right<<endl;
     if(left == right)
         return;
     int mid = (left + right) / 2;
@@ -38,7 +39,6 @@ void rearrange(vector<int> &arr, int left, int right){
     rearrange(arr, left, mid);
     rearrange(arr, mid+1, right);
 
-//    cout<<"merge :: "<<left<<" "<<mid<<" "<<right<<endl;
     modified_merge(arr, left, mid, right);
 }
 
