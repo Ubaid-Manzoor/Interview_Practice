@@ -37,16 +37,27 @@ void moveZerosToEnd_I(vector<int> &arr){
         arr[i] = 0;
 }
 
+void moveZerosToEnd_II(vector<int> &arr){
+    int count=0;
+    for(int i=0; i < arr.size();i++){
+        if(arr[i] != 0){
+//            arr[count] = arr[i];
+            iter_swap(arr.begin() + count, arr.begin() + i);
+            count++;
+        }
+    }
+}
+
 
 int main()
 {
-    vector<int> arr={1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
-//    vector<int> arr={1, 2, 0, 4, 3, 0, 5, 0};
+//    vector<int> arr={1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+    vector<int> arr={1, 2, 0, 4, 3, 0, 5, 0};
 //    vector<int> arr={1, 2, 0, 0, 0, 3, 6};
 //    vector<int> arr={0,0,0,0};
 //    vector<int> arr={1,2,3,4,0,0,0,0};
 //    vector<int> arr={0,0,0,0,1,2,3,4};
 //    vector<int> arr={0,0,0,0,1,2,3,4,0,0,0};
-    moveZerosToEnd_I(arr);
+    moveZerosToEnd_II(arr);
     printVec(arr);
 }
