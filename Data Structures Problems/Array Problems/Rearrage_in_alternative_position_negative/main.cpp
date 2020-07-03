@@ -93,6 +93,8 @@ void rearrange_II(vector<int> &arr){
 
     }
 
+    printVec(arr);
+
     // left points to first -ve value in arr after partition
     for(int i = 1 ; i < arr.size() and left < arr.size() ; i += 2){
         if(arr[i] >= 0)
@@ -107,7 +109,9 @@ int main(){
 //    vector<int> arr = {-5, -3, -4, -5, -6, 2 , 8, 9, 1 , 4};
 //    vector<int> arr = {5, 3, 4, 2, 1, -2 , -8, -9, -1 , -4};
 //    vector<int> arr = {-5, 3, -4, -7, -1, -2 , -8, -9, 1 , -4};
-    vector<int> arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
+//    vector<int> arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
+        vector<int> arr = {-5,0, -2, 5, 2, 4, 7, 1, 8, -8};
+        // vector<int> arr = {-5, -2, 5, 2, 4, 7, 1, 8, -8};
     rearrange_II(arr);
     printVec(arr);
 }
