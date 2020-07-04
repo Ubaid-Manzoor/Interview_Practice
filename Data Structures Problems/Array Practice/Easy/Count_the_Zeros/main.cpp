@@ -5,13 +5,6 @@ using namespace std;
 
 // Problem Link :: https://practice.geeksforgeeks.org/problems/count-the-zeros/0
 
-void printVec(vector<int> &arr){
-    for(int v:arr){
-        cout<<v<<" ";
-    }
-    cout<<endl;
-}
-
 
 int binary_search(const vector<int> &arr, int left, int right){
     cout<<left<<" "<<right<<endl;
@@ -30,6 +23,7 @@ int binary_search(const vector<int> &arr, int left, int right){
 }
 
 // Time Complexity O(logn)
+// Space Complexity O(1)
 int count_zeros(const vector<int> &arr){
     if(arr.back() == 1)
         return 0;
@@ -49,7 +43,6 @@ int main(){
             int value;cin>>value;
             arr[i] = value;
         }
-        printVec(arr);
         cout<<count_zeros(arr)<<endl;
     }
 }
