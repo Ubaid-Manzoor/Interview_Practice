@@ -12,9 +12,11 @@ int smallest_subarray(vector<int> &arr, int sum){
 
     int current_subarray_size = numeric_limits<int>::max();
     int current_subarray_sum = 0;
-    for(int left = 0 ,right=-1; right < int(arr.size());){
+    for(int left = 0 ,right=-1;;){
         if(current_subarray_sum <= sum ){
             right++;
+            if(right == arr.size())
+                break;
             current_subarray_sum += arr[right];
         }else if(current_subarray_sum - arr[left] > sum){
             current_subarray_sum -= arr[left];
