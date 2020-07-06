@@ -8,14 +8,12 @@ using namespace std;
 long long int countSubarrWithEqualZeroAndOne(int arr[], int N){
     unordered_map<int,int> hashmap;
 
-    for(int i = 0 ; i < N ; i++){
-        if(arr[i] == 0)
-            arr[i] = -1;
-    }
-
     int running_sum = 0;
     long long int subarray_count = 0;
     for(int i = 0 ; i < N ; i++){
+        if(arr[i] == 0)
+            arr[i] = -1;
+
         running_sum += arr[i];
 
         if(running_sum == 0){
