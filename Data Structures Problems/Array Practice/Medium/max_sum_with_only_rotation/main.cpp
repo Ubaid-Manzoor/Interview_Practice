@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/max-sum-in-the-configuration/1
+
 // We have to Max Sum(i * arr[i]) with only rotaions on given array allowed
 
 // Time Complexity O(n)
@@ -14,12 +16,12 @@ int max_rotation_sum(vector<int> arr){
     int arr_sum = accumulate(arr.begin(),arr.end(),0);
 
     int indexSum = 0;
-    for(int i = 1 ; i < arr.size(); i++)
+    for(int i = 0 ; i < arr.size(); i++)
         indexSum += i * arr[i];
 
     int max_sum = indexSum;
     for(int i = 0,right=arr.size()-1 ; i < arr.size() - 1 ; i++,right--){
-        indexSum = indexSum + arr_sum - (arr.size()) * right;
+        indexSum = (indexSum + arr_sum) - (arr.size()) * arr[right];
         max_sum = max(max_sum,indexSum);
     }
 

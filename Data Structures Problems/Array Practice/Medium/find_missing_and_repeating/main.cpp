@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/find-missing-and-repeating/0
+
 void missing_and_repeated(vector<int> &arr){
 
     int repeated = -1;
