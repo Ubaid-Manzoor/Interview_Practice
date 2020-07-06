@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k/0
+
 int longest_subarray(vector<int> &arr, int required_sum){
     unordered_map<int,int> hashmap;
 
@@ -18,8 +20,6 @@ int longest_subarray(vector<int> &arr, int required_sum){
         if(hashmap.find(running_sum) == hashmap.end())
             hashmap[running_sum] = i;
 
-//        cout<<"required_sum :: "<<required_sum<<endl;
-//        cout<<"we need :: "<<running_sum - required_sum<<endl;
         if(hashmap.find(running_sum - required_sum) != hashmap.end()){
             longest_subarr = max(longest_subarr,i - hashmap[running_sum-required_sum]);
         }
