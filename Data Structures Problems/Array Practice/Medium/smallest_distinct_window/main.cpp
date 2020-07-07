@@ -3,22 +3,7 @@
 
 using namespace std;
 
-bool are_equal(unordered_map<char,int> unique_characters, unordered_map<char,int> current_characters){
-    for(auto it1=unique_characters.begin(); it1 != unique_characters.end();it1++){
-        if(current_characters[it1->first] <= 0)
-            return false;
-    }
-    return true;
-}
-
-void printMap(unordered_map<char,int> hashmap){
-    for(auto p:hashmap)
-        cout<<p.first<<" ";
-    cout<<endl;
-    for(auto p:hashmap)
-        cout<<p.second<<" ";
-    cout<<endl;
-}
+// Problem Link :: https://practice.geeksforgeeks.org/problems/smallest-distant-window/0
 
 int smallest_distinct_window(string str){
 
