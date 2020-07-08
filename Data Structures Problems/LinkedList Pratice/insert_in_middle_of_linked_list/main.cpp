@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1
+
 struct Node
 {
     int data;
@@ -95,3 +97,28 @@ Node* insertInMiddle(Node* head, int x){
     current->next = node;
     return head;
 }
+
+
+Node* insertInMiddle_better(Node* head, int x){
+    if(head == NULL)
+        return new Node(x);
+
+    Node *node = new Node(x);
+    Node *slow=head;
+    Node *fast=head;
+
+    while(fast and fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    node->next = slow->next;
+    slow->next = node;
+    return head;
+}
+
+
+
+
+
+
