@@ -99,7 +99,7 @@ Node* insertInMiddle(Node* head, int x){
 }
 
 
-Node* insertInMiddle_better(Node* head, int x){
+Node* insertInMiddle(Node* head, int x){
     if(head == NULL)
         return new Node(x);
 
@@ -107,7 +107,7 @@ Node* insertInMiddle_better(Node* head, int x){
     Node *slow=head;
     Node *fast=head;
 
-    while(fast and fast->next){
+    while(fast->next and fast->next->next){
         slow = slow->next;
         fast = fast->next->next;
     }
