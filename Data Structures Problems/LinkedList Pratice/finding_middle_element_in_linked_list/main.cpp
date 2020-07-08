@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1
+
 struct Node
 {
     int data;
@@ -61,7 +63,9 @@ struct Node {
 }; */
 
 /* Should return data of middle node. If linked list is empty, then  -1*/
-int getMiddle(Node *head){
+
+// Time Complexity O(n) but 2n
+int getMiddle_slow(Node *head){
 
     if(head == NULL) return -1;
 
@@ -85,6 +89,21 @@ int getMiddle(Node *head){
     return current->data;
 }
 
+// Time Complexity if O(n) just n
+
+int getMiddle(Node *head){
+    if(head == NULL) return -1;
+
+    Node *slow=head;
+    Node *fast=head;
+
+    while(fast != NULL and fast->next != NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow->data;
+}
 
 
 
