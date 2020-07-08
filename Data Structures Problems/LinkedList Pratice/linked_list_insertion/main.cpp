@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1
+
 struct Node
 {
     int data;
@@ -61,13 +63,34 @@ struct Node {
   }
 }; */
 
+// MY CODE STARTS HERE
+
 // function inserts the data in front of the list
-Node *insertAtBegining(Node *head, int newData) {
-   // Your code here
+Node *insertAtBegining(Node *head, int data) {
+   Node *startnode = new Node(data);
+   startnode->next = head;
+   head = startnode;
+
+   return head;
 }
 
 
 // function appends the data at the end of the list
-Node *insertAtEnd(Node *head, int newData)  {
+Node *insertAtEnd(Node *head, int data)  {
    // Your code here
+    if(head == NULL){
+        Node *node = new Node(data);
+        head = node;
+        return head;
+    }
+
+    Node *current = head;
+    while(current->next != NULL){
+        current = current->next;
+    }
+
+    Node *node = new Node(data);
+    current->next = node;
+
+    return head;
 }
