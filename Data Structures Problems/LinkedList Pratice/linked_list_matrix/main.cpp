@@ -110,6 +110,22 @@ Node* constructLinkedMatrix(int mat[MAX][MAX], int n){
 
 
 
+// USING RECURRSION
+
+Node * construct(int mat[MAX][MAX], int i, int j , int n){
+    if(i >= n or j >= n)
+        return NULL;
+
+    Node *node = new Node(mat[i][j]);
+    node->right = construct(mat, i,j + 1,n) ;
+    node->down = construct(mat,i + 1, j, n);
+
+    return node;
+}
+
+Node * constructLinkedMatrix(int mat[MAX][MAX], int n){
+    return construct(mat, 0,0,n);
+}
 
 
 
