@@ -97,8 +97,14 @@ struct Node* reverseList(struct Node *head){
 }
 
 
-
-
+struct Node* reverseList_recurse(struct Node *head){
+    if(head->next == NULL)
+        return head;
+    Node newHead = reverseList_recurse(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return newHead;
+}
 
 
 
