@@ -4,6 +4,8 @@
 #include<iostream>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/occurence-of-an-integer-in-a-linked-list/1
+
 int count(struct node* head, int search_for);
 /* Link list node */
 struct node
