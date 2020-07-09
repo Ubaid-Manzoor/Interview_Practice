@@ -5,6 +5,8 @@
 #include<iostream>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
+
 /* Link list Node */
 struct Node {
   int data;
@@ -71,7 +73,7 @@ int recurse(Node *current, int size, int &n){
     size++;
     int value = recurse(current->next, size ,n);
     n--;
-    cout<<n<<endl;
+
     if(n == 0)
         return current->data;
     else
@@ -79,7 +81,25 @@ int recurse(Node *current, int size, int &n){
 }
 
 
-int getNthFromLast(Node *head, int n){
+int getNthFromLast_with_recursion(Node *head, int n){
        int size=0;
        return recurse(head,size,n);
+}
+
+
+int getNthFromLast(Node *head, int n){
+    Node *first=head;
+    Node *second=head;
+
+    int position = 1;
+    while(second->next != NULL){
+        second = second->next;
+        if(position >= n)
+            first = first->next;
+        position++;
+    }
+
+    if(n > position)
+        return -1;
+    return first->data;
 }
