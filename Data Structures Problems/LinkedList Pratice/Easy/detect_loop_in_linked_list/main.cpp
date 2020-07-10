@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Problem Link :: https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+
 struct Node
 {
     int data;
@@ -80,13 +82,13 @@ bool detectLoop(Node* head){
     Node *fast=head;
 
 
-    while(fast != NULL and fast->next != NULL and fast != slow and fast->next != slow){
+    while(true){
         slow = slow->next;
         fast = fast->next->next;
-    }
 
-    if(fast == NULL or fast->next == NULL)
-        return false;
-    else
-        return true;
+        if(fast == NULL or fast->next == NULL)
+            return false;
+        if(fast == slow or fast->next == slow)
+            return true;
+    }
 }
