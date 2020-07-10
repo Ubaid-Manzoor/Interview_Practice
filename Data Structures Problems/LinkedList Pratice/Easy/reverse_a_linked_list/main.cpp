@@ -82,15 +82,15 @@ struct Node
 // Should reverse list and return new head.
 struct Node* reverseList(struct Node *head){
 
-    Node *current = head;
+    Node *current = head,*prev = NULL;
     Node *newHead = NULL;
 
     while(current != NULL){
-        Node *temp_current = current;
+        prev = current;
 
         current = current->next;
-        temp_current->next = newHead;
-        newHead = temp_current;
+        prev->next = newHead;
+        newHead = prev;
     }
 
     return newHead;

@@ -68,7 +68,8 @@ struct Node
 
 */
 
-
+// Time Complexity O(n)
+// Space Complexity (n) using recursion
 int recurse(Node *head){
     if(head->next == NULL){
         int result = head->data + 1;
@@ -82,7 +83,9 @@ int recurse(Node *head){
     return result/10;
 }
 
-Node* addOne(Node *head) {
+
+
+Node* addOne_rec(Node *head) {
     // Your Code here
 
     int carry = recurse(head);
@@ -94,4 +97,77 @@ Node* addOne(Node *head) {
 
     return head;
 }
+
+// With out recursion
+Node *reverse(Node *head){
+    Node *current = head, *prev = NULL;
+    Node *newHead = NULL;
+
+    while(current != NULL){
+        prev = current;
+        current = current->next;
+        prev->next = newHead;
+        newHead = prev;
+    }
+
+    return newHead;
+}
+
+
+
+Node* addOne(Node *head){
+    head = reverse(head);
+
+    Node *current = head;
+    int carry = 1;
+    while(true){
+        int result = current->data + carry;
+        current->data = result%10;
+        carry = result / 10;
+
+        if(current->next == NULL){
+            if(carry == 1){
+                Node *node = new Node(1);
+                current->next = node;
+            }
+            break;
+        }
+        current = current->next;
+    }
+
+    if(carry == 1){
+
+    }
+
+    head = reverse(head);
+    return head;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
