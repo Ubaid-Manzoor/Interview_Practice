@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stack>
 using namespace std;
+
+// Problem Link :: https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+
 /* Link list Node */
 struct Node {
   int data;
@@ -81,6 +84,9 @@ Node * mid_pointer(Node * head){
     return slow;
 }
 
+
+// Time Complexity O(n)
+// Space Complexity O(1)s
 bool isPalindrome(Node *head){
     if(head == NULL) return false;
     if(head->next == NULL) return true;
