@@ -97,7 +97,7 @@ struct node*update(struct node*head,int p){
         position++;
     }
 
-    if(position == p)
+    if(position == p) // position gives size of linked list , now if p == size that we dont have to rotate at all
         return head;
 
     if(current != NULL){
