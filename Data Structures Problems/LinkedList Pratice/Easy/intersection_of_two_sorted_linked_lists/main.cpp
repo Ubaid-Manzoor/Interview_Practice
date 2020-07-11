@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// PROBLEM LINK :: https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
+
 struct Node
 {
     int data;
@@ -98,11 +100,10 @@ Node* findIntersection(Node* head1, Node* head2){
             }
             current1 = current1->next;
             current2 = current2->next;
-        }else if(current1->data < current2->data){
+        }else if(current1->data < current2->data)
             current1 = current1->next;
-        }else{
+        else
             current2 = current2->next;
-        }
     }
 
     return head;
