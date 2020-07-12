@@ -33,10 +33,9 @@ bool check_if_anagram(string str1,string str2){
 int main()
 {
     int tc;cin>>tc;
-    for(int i ; i < tc; i++){
+    for(int i=0 ; i < tc; i++){
         string str1,str2;
         cin>>str1;cin>>str2;
-
         if(check_if_anagram(str1,str2))
             cout<<"YES"<<endl;
         else
