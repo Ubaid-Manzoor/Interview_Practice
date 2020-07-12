@@ -101,7 +101,7 @@ struct node*update(struct node*head,int p){
         return head;
 
     if(current != NULL){
-        current->next = start;
+        current->next = star;
         start->prev = current;
     }else{
         prev->next = start;

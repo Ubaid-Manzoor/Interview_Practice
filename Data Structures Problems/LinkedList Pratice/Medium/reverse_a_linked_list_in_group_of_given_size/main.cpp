@@ -102,7 +102,7 @@ struct node *reverse (struct node *head, int k){
 
    if(current == NULL) return prev;
 
-   head->next = reverse(head->next,k);
+   head->next = reverse(prev->next,k);
 
    return prev;
 }
