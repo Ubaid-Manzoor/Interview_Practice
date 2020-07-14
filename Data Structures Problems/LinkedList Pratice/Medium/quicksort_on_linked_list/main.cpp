@@ -83,8 +83,11 @@ struct node
         next = NULL;
     }
 }; */
-
-//you have to complete this function
+//*******************************************************************************************************************
+//*******************************************************************************************************************
+//******************************************* MY CODE START HERE ****************************************************
+//*******************************************************************************************************************
+//*******************************************************************************************************************
 
 // ASSUMING FIRST ELEMENT IS THE PIVOT
 struct node* tail(struct node *head){
@@ -94,10 +97,6 @@ struct node* tail(struct node *head){
 }
 
 void swap_value(struct node * first, struct node * second){
-//    first->data = first->data + second->data;
-//    second->data = first->data - second->data;
-//    first->data = first->data - second->data;
-
     int temp = first->data;
     first->data = second->data;
     second->data = temp;
