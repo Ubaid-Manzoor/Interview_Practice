@@ -43,7 +43,6 @@ void _getMinAtPop(stack<int>st)
         cout<<st.top()<<" ";
         st.pop();
     }
-    cout<<endl;
 }
 
 // { Driver Code Starts.
