@@ -1,69 +1,70 @@
 // { Driver Code Starts
-#include<iostream>
-#include<stack>
+//Initial Template for C++
+
+
+#include <bits/stdc++.h>
 using namespace std;
-void push(int a);
-bool isFull(int n);
-bool isEmpty();
-int pop();
-int getMin();
-//This is the STL stack (http://quiz.geeksforgeeks.org/stack-container-adaptors-the-c-standard-template-library-stl/).
-stack<int> s;
-int main(){
+
+stack<int>_push(int arr[],int n);
+
+void _getMinAtPop(stack<int>s);
+
+ // } Driver Code Ends
+
+
+//User function Template for C++
+
+/* inserts elements of the array into
+   stack and return the stack
+*/
+stack<int> _push(int arr[],int n)
+{
+   // your code here
+   stack<int> st;
+   for(int i = 0 ; i < n ;i++){
+       if(st.empty()){
+           st.emplace(arr[i]);
+       }else if(st.top() > arr[i]){
+           st.emplace(arr[i]);
+       }else{
+           st.emplace(st.top());
+       }
+   }
+   return st;
+}
+
+/* print minimum element of the stack each time
+   after popping
+*/
+void _getMinAtPop(stack<int>st)
+{
+    // your code here
+    while(not st.empty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<endl;
+}
+
+// { Driver Code Starts.
+int main() {
     int t;
     cin>>t;
-    while(t--){
-        int n,a;
+    while(t--)
+    {
+        int n;
         cin>>n;
-        while(!isEmpty()){
-            pop();
-        }
-        while(!isFull(n)){
-            cin>>a;
-            push(a);
-        }
-        cout<<getMin()<<endl;
+        int arr[n];
+        for(int i=0;i<n;i++)
+        cin>>arr[i];
+        stack<int>mys=_push(arr,n);
+        _getMinAtPop(mys);
+        cout<<endl;
+
+
+
     }
-}// } Driver Code Ends
-
-
-stack<int> min_s;
-
-/*Complete the function(s) below*/
-void push(int a)
-{
-     //add code here.
-    s.emplace(a);
-
-    if(not min_s.empty())
-        a = min(min_s.top(),a);
-    min_s.emplace(a);
+    return 0;
 }
 
-bool isFull(int n)
-{
-     //add code here.
-    return s.size() == n;
-}
-
-bool isEmpty()
-{
-    //add code here.
-    return s.empty();
-}
-
-int pop()
-{
-    //add code here.
-    int top = s.top();
-    s.pop();
-    min_s.pop();
-    return top;
-}
-
-int getMin()
-{
-   //add code here.
-    int top = min_s.top();
-    return top;
-}
+  // } Driver Code Ends
