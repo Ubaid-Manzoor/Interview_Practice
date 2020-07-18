@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 bool is_operator(char o){
@@ -14,8 +15,8 @@ int evaluvate(string postfix){
 
     for(int i = 0; i < postfix.size() ; i++){
         if( is_operator(postfix[i]) ){
-            int b = int(st.top());st.pop();
-            int a = int(st.top());st.pop();
+            int b = st.top();st.pop();
+            int a = st.top();st.pop();
             switch(postfix[i]){
                 case '+':
                     st.emplace(a + b);
@@ -33,12 +34,12 @@ int evaluvate(string postfix){
                     break;
             }
         }else{
-            st.emplace(postfix[i]);
+            st.emplace(postfix[i] - '0');
         }
     }
     return st.top();
 }
-//}
+
 
 int main() {
     //code
@@ -46,7 +47,7 @@ int main() {
     int tc;cin>>tc;
     for(int i = 0 ; i < tc; i++){
         string postfix;cin>>postfix;
-        evaluate(postfix);
+        cout<<evaluvate(postfix)<<endl;
     }
     return 0;
 }
