@@ -61,13 +61,6 @@ struct Node
 };
 */
 
-//int find_index(int in[], int root, int n){
-//    for(int i = 0 ; i < n ; i++){
-//        if(root == in[i])
-//            return i;
-//    }
-//}
-
 Node* buildTreeUtil(int in[], int pre[],int l, int r, int &r_index,unordered_map<int,int> &hash){
     cout<<l<<" "<<r<<" root ::"<<pre[r_index]<<endl;
     if(r-l <= 0){
