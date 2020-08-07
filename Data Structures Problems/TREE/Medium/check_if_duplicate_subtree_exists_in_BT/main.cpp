@@ -162,7 +162,74 @@ struct Node
 
 /*This function returns true if the tree contains
 a duplicate subtree of size 2 or more else returns false*/
-bool dupSub(Node *root)
-{
-     //your code here
+
+string tree_str(Node *root){
+    string str = "";
+    str += root->data;
+    str += root->left ? root->left->data : '_';
+    str += root->right ? root->right->data : '_';
+    return str;
 }
+
+bool dupSubUtil(Node *root,unordered_set<string> &trees){
+    if(root == NULL){
+        return false;
+    }
+
+    if(not (root->left == NULL and root->right == NULL) ){
+        string current_tree_str = tree_str(root);
+        if(trees.find(current_tree_str) != trees.end())
+            return true;
+        trees.emplace(current_tree_str);
+    }
+
+    bool dupExists = dupSubUtil(root->left, trees);
+    if(not dupExists)
+        dupExists = dupSubUtil(root->right, trees);
+
+    return dupExists;
+}
+
+bool dupSub(Node *root){
+    unordered_set<string> trees;
+    return dupSubUtil(root, trees);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
