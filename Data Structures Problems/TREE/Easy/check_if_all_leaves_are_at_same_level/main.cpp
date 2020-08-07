@@ -117,6 +117,9 @@ struct Node
 
 /*You are required to complete this method*/
 void checkUtil(Node* root, int current_level, unordered_set<int> &leaf_levels){
+    if(leaf_levels.size() > 1)
+        return;
+
     if(root->left == NULL and root->right == NULL){
         leaf_levels.emplace(current_level);
         return;
@@ -140,7 +143,6 @@ bool check(Node *root){
     else
         return true;
 }
-
 
 
 
