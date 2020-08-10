@@ -115,46 +115,18 @@ struct Node {
 
 
 bool isIsomorphic(Node *root1,Node *root2){
-    cout<<root1->data<<" "<<root2->data<<endl;
-    if(root1 == NULL and root2 == NULL)
+    if(not root1 and not root2)
         return true;
-    if(not root1->left and not root1->right and not root2->left and not root2->right)
-        return true;
-
-    // cout<<root1->data<<" "<<root2->data<<endl;
-
-    bool is_isomorphic;
-    if(root1->left and root2->left and root1->left->data == root2->left->data){
-        is_isomorphic = isIsomorphic(root1->left, root2->left);
-        cout<<"is_ : "<<is_isomorphic<<endl;
-    }
-    else if(root1->left and root2->right and root1->left->data == root2->right->data){
-        is_isomorphic = isIsomorphic(root1->left, root2->right);
-        cout<<root1->data<<" "<<root2->data;
-        cout<<"is_ : "<<is_isomorphic<<endl;
-    }
-    else
+    else if(not root1 or not root2)
         return false;
 
-//    cout<<root1->data<<" "<<root2->data<<endl;
-//    cout<<is_isomorphic<<endl;
-//    cout<<"==="<<endl;
-    if(not is_isomorphic)
+    bool is_iso1,is_iso2;
+    if(root1->data == root2->data){
+        is_iso1 = isIsomorphic(root1->left, root2->left) and isIsomorphic(root1->right, root2->right);
+        is_iso2 = isIsomorphic(root1->left, root2->right) and isIsomorphic(root1->right, root2->left);
+        return is_iso1 or is_iso2;
+    }else
         return false;
-
-    if(not root1->right and not root2->right)
-        return true;
-    if(not root1->right and not root2->left)
-        return true;
-
-    if(root1->right->data == root2->right->data)
-        is_isomorphic = isIsomorphic(root1->right,root2->right);
-    else if(root1->right->data == root2->left->data)
-        is_isomorphic = isIsomorphic(root1->right,root2->left);
-    else
-        return false;
-
-    return is_isomorphic;
 }
 
 
