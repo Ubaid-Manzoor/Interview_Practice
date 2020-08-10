@@ -159,32 +159,33 @@ struct Node
 
 // This function should return head to the DLL
 
-void bToDLLUtil(Node *root, Node *&prev, Node *&head){
-    // your code here
-    if(root == NULL){
-        prev = NULL;
+
+void inOrder(Node *root, Node *&prev, Node *&head){
+
+    if(root->left)
+        inOrder(root->left, prev, head);
+
+    root->left = prev;
+    if(prev)
+        prev->right = root;
+    else
+        head = root;
+    prev = root;
+
+    if(root->right)
+        inOrder(root->right, prev, head);
+
+    if(not root->left and not root->right){
+        prev = root;
         return;
     }
-
-    prev = root;
-    bToDLLUtil(root->left, root, head);
-    root->left = prev;
-    prev = root;
-
-    if(head == NULL)
-        head = root;
-    cout<<head->data<<endl;
-
-    bToDLLUtil(root->right, root, head);
-    root->right = prev;
-    prev = root;
 }
 
 Node * bToDLL(Node *root){
+    Node *prev=NULL;
     Node *head=NULL;
-    Node *prev = NULL;
-    bToDLLUtil(root, prev, head);
-    return NULL;
+    inOrder(root, prev, head);
+    return head;
 }
 
 
@@ -194,12 +195,7 @@ Node * bToDLL(Node *root){
 
 
 
-
-
-
-
-
-
+// 10 12 15 25 30 36
 
 
 
