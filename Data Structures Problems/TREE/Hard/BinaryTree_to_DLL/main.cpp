@@ -175,10 +175,8 @@ void inOrder(Node *root, Node *&prev, Node *&head){
     if(root->right)
         inOrder(root->right, prev, head);
 
-    if(not root->left and not root->right){
-        prev = root;
+    if(not root->left and not root->right)
         return;
-    }
 }
 
 Node * bToDLL(Node *root){
