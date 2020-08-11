@@ -114,6 +114,7 @@ struct Node {
 // Returns the LCA of the nodes with values n1 and n2
 // in the BST rooted at 'root'
 
+// Solution with logn extra space
 void pathTo(Node *root, vector<Node*> &path , int to){
     if(root == NULL)
         return;
@@ -128,7 +129,7 @@ void pathTo(Node *root, vector<Node*> &path , int to){
         pathTo(root->right, path, to);
 
 }
-Node* LCA(Node *root, int n1, int n2)
+Node* LCA_(Node *root, int n1, int n2)
 {
     //Your code here
     vector<Node*> path1,path2;
@@ -144,3 +145,28 @@ Node* LCA(Node *root, int n1, int n2)
    }
     return path1.size() < path2.size() ? path1.back() : path2.back();
 }
+
+
+// better Solution
+Node* LCA(Node *root, int n1, int n2)
+{
+    //Your code here
+    Node* current = root;
+
+    while(true){
+        if(min(n1,n2) <= current->data and current->data <= max(n1,n2))
+            return current;
+
+        if(n1 < current->data){
+            current = current->left;
+        else
+            current = current->right;
+    }
+}
+
+
+
+
+
+
+
