@@ -49,27 +49,19 @@ struct Node {
 };
 */
 
-void countNodesInrange(Node *root, int l, int h, bool &startCount, int &count){
+void countNodesInrange(Node *root, int l, int h, int &count){
     if(root == NULL)
         return;
 
-    countNodesInrange(root->left, l, h, startCount,count);
-
-    cout<<root->data<<endl;
-    if(root->data == l)
-        startCount = true;
-    if(startCount)
+    if(l <= root->data and root->data <= h)
         count++;
-    if(root->data == h)
-        startCount = false;
-
-    countNodesInrange(root->right, l, h, startCount, count);
+    countNodesInrange(root->left, l, h, count);
+    countNodesInrange(root->right, l, h, count);
 }
 
 int getCountOfNode(Node *root, int l, int h){
-    bool startCount=false;
     int count=0;
-    countNodesInrange(root, l, h, startCount, count);
+    countNodesInrange(root, l, h, count);
 
     return count;
 }
