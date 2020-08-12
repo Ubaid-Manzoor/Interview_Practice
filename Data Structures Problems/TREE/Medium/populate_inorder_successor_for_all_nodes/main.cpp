@@ -128,12 +128,10 @@ void inOrder(node* root, node* &prev){
         return;
 
     inOrder(root->left, prev);
-
     if(prev)
         prev->next = root;
 
     prev = root;
-
     inOrder(root->right, prev);
 }
 
