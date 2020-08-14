@@ -20,10 +20,18 @@ struct Node
 void inOrder(struct Node *root) {
     stack<Node*> s;
 
-    s.emplace(root);
+    Node *current = root;
 
-    while(not s.empty()){
+    while(current or not s.empty()){
 
+        while(current){
+            cout<<current->data<<" ";
+            s.emplace(current);
+            current = current->left;
+        }
+
+        Node *top = s.top();s.pop();
+        current = top->right;
     }
 
 }
