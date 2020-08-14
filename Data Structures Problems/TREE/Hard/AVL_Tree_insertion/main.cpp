@@ -130,17 +130,8 @@ Node* rightRotate(Node* root){
     newRoot->height = max(heightOf(newRoot->left),heightOf(newRoot->right)) + 1;
     return  newRoot;
 }
-bool checkIfBalanced(Node* root){
-    int leftHeight = root->left ? root->left->height : 0;
-    int rightHeight = root->right ? root->right->height : 0;
 
-    if(leftHeight - rightHeight > 1 or rightHeight - leftHeight > 1)
-        return false;
-    return true;
-}
-
-
-Node* insertToAVLUtil(Node* root, int data, Node* parent){
+Node* insertToAVL(Node* root, int data){
     if(root == NULL){
         Node* node = new Node(data);
         return node;
@@ -150,9 +141,9 @@ Node* insertToAVLUtil(Node* root, int data, Node* parent){
         return root;
 
     if(data < root->data){
-        root->left = insertToAVLUtil(root->left, data, parent);
+        root->left = insertToAVL(root->left, data);
     }else{
-        root->right = insertToAVLUtil(root->right, data, parent);
+        root->right = insertToAVL(root->right, data);
     }
 
     int leftHeight = heightOf(root->left);
@@ -160,33 +151,22 @@ Node* insertToAVLUtil(Node* root, int data, Node* parent){
     root->height = max(leftHeight, rightHeight) + 1;
 
     if(leftHeight - rightHeight > 1){ // RIGHT Rotation
-        if(data < root->left->data){
-            // cout<<"RIGHT RIGHT"<<endl;
+        if(data < root->left->data) // RIGHT ROTATION
             return rightRotate(root);
-        }else{
-            // cout<<"LEFT RIGHT"<<endl;
-            root->left = leftRotate(root->left);
+        else{
+            root->left = leftRotate(root->left); // LR ROTATION
             return rightRotate(root);
         }
     }else if(rightHeight - leftHeight > 1){ // LEFT Rotation
-        if(data > root->right->data){
-            // cout<<"LEFT LEFT"<<endl;
+        if(data > root->right->data) // LEFT ROTATION
             return leftRotate(root);
-        }else{
-            // cout<<"RIGHT LEFT"<<endl;
-            root->right = rightRotate(root->right);
+        else{
+            root->right = rightRotate(root->right); // RIGHT LEFT ROTATION
             return leftRotate(root);
         }
     }
 
 
-    return root;
-}
-
-Node* insertToAVL(Node* node, int data){
-    // cout<<"data to add :: "<<data<<endl;
-    Node* parent=NULL;
-    Node *root = insertToAVLUtil(node, data, parent);
     return root;
 }
 
