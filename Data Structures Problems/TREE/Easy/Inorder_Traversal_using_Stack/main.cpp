@@ -25,12 +25,12 @@ void inOrder(struct Node *root) {
     while(current or not s.empty()){
 
         while(current){
-            cout<<current->data<<" ";
             s.emplace(current);
             current = current->left;
         }
 
         Node *top = s.top();s.pop();
+        cout<<top->data<<" ";
         current = top->right;
     }
 
