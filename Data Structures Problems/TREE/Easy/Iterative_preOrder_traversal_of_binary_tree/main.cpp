@@ -43,6 +43,31 @@ void iterativePreorder(node *root)
 
 }
 
+void iterativePreorder_(node *root){
+    if(root == NULL)
+        return;
+
+    stack<node*> s;
+    node * current = root;
+
+    while(current or not s.empty()){
+            while(current){
+                cout<<current->data<<" ";
+                s.emplace(current);
+                current = current->left;
+            }
+
+            while(not s.empty() and not s.top()->right )
+                s.pop();
+
+            if(not s.empty()){
+                current = s.top()->right;
+                s.pop();
+            }else
+                current = NULL;
+    }
+}
+
 // Driver program to test above functions
 int main()
 {
@@ -59,6 +84,28 @@ int main()
   root->left->left  = newNode(3);
   root->left->right = newNode(5);
   root->right->left = newNode(2);
-  iterativePreorder(root);
+  root->right->left->right = newNode(33);
+  iterativePreorder_(root);
   return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
