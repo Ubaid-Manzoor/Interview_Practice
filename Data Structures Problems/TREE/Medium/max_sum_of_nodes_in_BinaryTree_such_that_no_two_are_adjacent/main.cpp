@@ -18,14 +18,17 @@ struct node* newNode(int data)
 }
 
 
-void getMaxSumUtil(node*root, node* grandparent, int level, unordered_set<node*> set, int result){
-    if(not root){
-
-    }
-}
-
 int getMaxSum(node* root){
+    if(root == NULL)
+        return 0;
 
+    int sumWithRoot,sumWithoutRoot;
+
+    sumWith = getMaxSum();
+
+    sumWithoutRoot = getMaxSum();
+
+    return max(sumWithoutRoot, sumWithRoot);
 }
 
 //  Driver code to test above methods
