@@ -32,6 +32,9 @@ int findLargestSubtreeSumUtil(Node* root, int &maxSum){
 }
 
 int findLargestSubtreeSum(Node* root){
+    if(not root)
+        return 0;
+
     int maxSum=numeric_limits<int>::min();
     findLargestSubtreeSumUtil(root, maxSum);
     return maxSum;
