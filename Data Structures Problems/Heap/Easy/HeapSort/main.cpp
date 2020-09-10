@@ -78,22 +78,18 @@ bool isLeaf(int pos, int size){
 
 void heapify(int arr[], int n, int i)  {
       // Your Code Here
-    if(isLeaf(i, n))
-        return;
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
 
-    if(arr[leftChild(i)] > arr[i] or (rightChild(i) < n and arr[rightChild(i)] > arr[i])){
-        if(rightChild(i) >= n){
-            swap(arr[i], arr[leftChild(i)]);
-            heapify(arr, n, leftChild(i));
-        }else{
-            if(arr[leftChild(i)] > arr[rightChild(i)]){
-                swap(arr[i], arr[leftChild(i)]);
-                heapify(arr, n, leftChild(i));
-            }else{
-                swap(arr[i], arr[rightChild(i)]);
-                heapify(arr, n, rightChild(i));
-            }
-        }
+    if(l < n and arr[l] > arr[largest])
+        largest = l;
+    if(r < n and arr[r] > arr[largest])
+        largest = r;
+
+    if(largest != i){
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
     }
 }
 
@@ -101,9 +97,9 @@ void heapify(int arr[], int n, int i)  {
 void buildHeap(int arr[], int n)  {
     // Your Code Here
 
-    for(int i = n-1; i >= 0 ; i--){
+    for(int i = (n-1)/2
+        ; i >= 0 ; i--)
         heapify(arr, n, i);
-    }
 }
 
 
