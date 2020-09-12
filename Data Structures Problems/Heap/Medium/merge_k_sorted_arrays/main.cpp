@@ -38,22 +38,25 @@ int main()
 // your task is tocomplete this function
 // function should return an pointer to output array int*
 // of size k*k
+
+typedef pair<int,pair<int,int>> pOfp;
 int *mergeKArrays(int arr[][N], int k){
-    priority_queue<tuple<int,int,int>, vector<tuple<int,int,int>>, greater<tuple<int,int,int>>> minheap;
+    priority_queue<pOfp, vector<pOfp>, greater<pOfp> > minheap;
     int *sorted_arr = new int[k*k];
 
-    for(int i = 0 ;i < k ; i++)
-        minheap.push(make_tuple(arr[i][0], i, 0));
 
-    int index=0;
-    while(not minheap.empty()){
-        sorted_arr[index] = get<0>(minheap.top());index++;
-        int row = get<1>(minheap.top());
-        int col = get<2>(minheap.top()) + 1;
+    for(int i = 0 ;i < k ; i++)
+        minheap.push(make_pair(arr[i][0], make_pair(i, 0)));
+
+    for(int index = 0 ; index < k*k ; index++){
+        pOfp top = minheap.top();
+        sorted_arr[index] = top.first;
+        int row = top.second.first;
+        int col = top.second.second + 1;
         minheap.pop();
 
         if(col < k)
-            minheap.push(make_tuple(arr[row][col], row, col));
+            minheap.push(make_pair(arr[row][col], make_pair(row, col)));
     }
 
     return sorted_arr;
