@@ -82,7 +82,6 @@ int main(){
 
     binaryTreeToMinHeap(head);
 
-//    cout<<"OUTPUT"<<endl;
     cout<<"InOrder :: "<<endl;
     printInorder(head);
     cout<<endl;
