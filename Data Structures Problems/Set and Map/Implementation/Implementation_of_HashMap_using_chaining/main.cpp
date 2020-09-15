@@ -30,6 +30,10 @@ int HashMap::hashFunction(int key){
 void HashMap::insert(int x){
     int index = hashFunction(x);
 
+    for(int v:table[index])
+        if(v == x)
+            return;
+
     table[index].emplace_back(x);
 }
 
@@ -52,7 +56,7 @@ void HashMap::displayHash(){
 int main()
 {
   // array that contains keys to be mapped
-  int a[] = {15, 11, 27, 8, 12};
+  int a[] = {15, 11, 27, 8, 12, 11,14};
   int n = sizeof(a)/sizeof(a[0]);
 
   // insert the keys into the hash table
@@ -61,7 +65,6 @@ int main()
   for (int i = 0; i < n; i++)
     h.insert(a[i]);
 
-  h.displayHash();
   // delete 12 from hash table
   h.deleteX(8);
 
