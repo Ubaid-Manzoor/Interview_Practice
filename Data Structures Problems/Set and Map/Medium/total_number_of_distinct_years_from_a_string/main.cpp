@@ -23,9 +23,8 @@ int distinct_year(string str){
     vector<range*> pattern(10);
     create_patter(pattern);
 
-    vector<string> dates;
+    unordered_set<string> dates;
     string date="";
-    int yearCount=0;
     for(int startIndex = 0 ; startIndex < str.size();){
         for(int i = 0 ;i < pattern.size() ; i++){
             int asscii = str[startIndex];
@@ -40,24 +39,23 @@ int distinct_year(string str){
             }
 
             if(i == 9){
-                yearCount += 1;
-                dates.emplace_back(date);
+                dates.emplace(date.substr(date.size()-4, date.size()));
             }
         }
     }
 
     for(string d:dates)
         cout<<d<<endl;
-    return yearCount;
+    return dates.size();
 }
 
 // Driver code
 int main()
 {
-//    string str = "UN was established on 24-10-1945."
-//                 "India got freedom on 15-08-1947.";
+    string str = "UN was established on 24-10-1945."
+                 "India got freedom on 15-08-1947.";
 
-    string str = "Soon after the world war 2 ended on 02-09-1945.The UN was established on 24-10-1945.";
+//    string str = "Soon after the world war 2 ended on 02-09-1945.The UN was established on 24-10-1945.";
 
     cout << distinct_year(str)<<endl;
 
