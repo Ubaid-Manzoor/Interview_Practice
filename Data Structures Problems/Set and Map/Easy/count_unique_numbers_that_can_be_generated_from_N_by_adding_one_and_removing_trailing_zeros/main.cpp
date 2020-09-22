@@ -9,7 +9,7 @@ void count_unique(unordered_set<int> &s, int n){
 
     s.emplace(n);
     int new_n = n + 1;
-    if(new_n % 10 == 0)
+    while(new_n % 10 == 0)
         new_n = new_n/10;
 
     count_unique(s, new_n);
