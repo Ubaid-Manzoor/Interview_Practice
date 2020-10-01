@@ -5,14 +5,12 @@ using namespace std;
 
 
 void dfsUtils(vector<int> g[], vector<int> &dfsVec, unordered_set<int> &visited, int v){
-    if(g[v].size() == 0 or visited.count(v) == 1)
-        return;
-
     dfsVec.emplace_back(v);
     visited.emplace(v);
 
     for(int new_v : g[v])
-        dfsUtils(g, dfsVec, visited, new_v);
+        if(visited.count(new_v) == 0)
+            dfsUtils(g, dfsVec, visited, new_v);
 }
 
 vector <int> dfs(vector<int> g[], int N){
