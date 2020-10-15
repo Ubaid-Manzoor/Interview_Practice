@@ -14,8 +14,6 @@ void addToQueueIfValid(int x, int y, vector<vector<int>> matrix, queue<pair<int,
     if(x >= 0 and x < rows and y >= 0 and y < cols and matrix[x][y] == 1){
         if(distances.count(x*cols+y) == 0)
             distances[x*cols+y] = dis + 1;
-        else
-            distances[x*cols+y] = min(distances[x*cols+y], dis + 1);
         q.emplace(make_pair(x,y));
     }
 }
