@@ -34,8 +34,6 @@ int main()
 #define log(x) cout<< #x <<" is equal to "<<x<<endl
 
 bool dfs(int G[][MAX], int v, unordered_set<int> &set1, unordered_set<int> &set2, int V){
-//    log(v);
-
     for(int des_v = 0 ; des_v < V ; des_v++){
         if(G[v][des_v]){
             if(set1.find(des_v) != set1.end() and set1.find(v) != set1.end())
