@@ -57,12 +57,12 @@ void BellmanFord(Graph graph, int s){
 
         if(not improved)
             break;
+    }
 
-        for(Edge e: graph.edges){
-            if(dist[e.src] + e.weight < dist[e.dest]){
-                cout<<"Negative Cycle Exists"<<endl;
-                return;
-            }
+    for(Edge e: graph.edges){
+        if(dist[e.src] + e.weight < dist[e.dest]){
+            cout<<"Negative Cycle Exists"<<endl;
+            return;
         }
     }
 
