@@ -21,18 +21,15 @@ public:
 };
 
 bool Graph::pathMoreThanKUtil(int src, int k, vector<bool> &path ){
-//    cout<<"k : "<<k<<endl;
     if(k <= 0)
         return true;
 
-//    cout<<src<<"->"<<endl;
     path[src] = true;
 
-    for(pair<int,int> desNode: adj[src]){
+    for(pair<int,int> desNode: adj[src])
         if(not path[desNode.first])
             if(pathMoreThanKUtil(desNode.first, k - desNode.second, path))
                 return true;
-    }
     path[src] = false;
     return false;
 }
