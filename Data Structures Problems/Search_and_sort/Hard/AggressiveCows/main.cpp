@@ -22,6 +22,7 @@ bool checkIfValid(vector<long long int> &coordinates, int numberOfCows, long lon
         return false;
 }
 
+// Recursive Way
 void binarySearch(vector<long long int> &coordinates,long long int l, long long int r, int cows, long long int &ans){
     if(l > r)
         return;
@@ -38,11 +39,23 @@ void binarySearch(vector<long long int> &coordinates,long long int l, long long 
 int largestMinimumDistance(vector<long long int> coordinates, int cows){
     sort(coordinates.begin(), coordinates.end());
 
-    long long int minDis = 0;
-    long long int maxDis = coordinates.back() - coordinates.front();
+    long long int l = 0;
+    long long int r = coordinates.back() - coordinates.front();
 
-    long long int ans;
-    binarySearch(coordinates, minDis, maxDis, cows, ans);
+//    long long int ans;
+//    binarySearch(coordinates, minDis, maxDis, cows, ans);
+
+    // Iterative Way
+    long long int mid, ans;
+    while(r >= l){
+        mid = l + (r - l)/2;
+        if(checkIfValid(coordinates, cows, mid)){
+            ans = mid;
+            l = mid + 1;
+        }else{
+            r = mid - 1;
+        }
+    }
 
     return ans;
 }
