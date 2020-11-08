@@ -1,17 +1,24 @@
 #include <iostream>
 using namespace std;
 
-void printCombinations(int s, string input, string output, int sizeToTake){
-    if(n > 0){
-        output += input.substr(s, sizeToTake);
-        printCombinations(n+1, , input, output, sizeToTake);
-        sizeToTake++;
-    }else
+void printCombinations(string input, int index=0, string output=""){
+    int n = input.size();
+    if(index == n){
         cout<<output<<endl;
+        return;
+    }
+
+    output += input[index];
+    output += " ";
+    printCombinations(input, index + 1, output);
+
+    if(index < n-1){
+        output.pop_back();
+        printCombinations(input, index + 1, output);
+    }
 }
 
 int main(){
-    string input = "123";
-
-    printCombinations(0, input, "", 1);
+    string input = "1214";
+    printCombinations(input);
 }
