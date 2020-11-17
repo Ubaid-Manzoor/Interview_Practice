@@ -1,5 +1,5 @@
+#include <bits/stdc++.h>
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -19,7 +19,11 @@ int countWays(int x, int n){
 
 int main()
 {
-    int x = 100, n = 2;
-    cout << countWays(x, n)<<endl;
-    return 0;
+    int tc;cin>>tc;
+
+    for(int i = 0 ; i < tc ; i++){
+        int x,n;cin>>x>>n;
+
+        cout<<countWays(x, n)<<endl;
+    }
 }
