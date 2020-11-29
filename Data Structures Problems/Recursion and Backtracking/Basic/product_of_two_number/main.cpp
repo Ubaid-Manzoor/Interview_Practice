@@ -16,7 +16,7 @@ int main()
 {
     int x = 5, y = 2;
     swap(x, y);
-    cout<<x<<" "<<y<<endl;
+//    cout<<x<<" "<<y<<endl;
     cout << product(x, y);
     return 0;
 }
