@@ -86,15 +86,18 @@ int main()
     for(int i = 0 ; i < tc ; i++){
         int n;cin>>n;
         vector<vector<int>> positions = NQueenPositions(n);
-        for(vector<int> v: positions){
-            cout<<"[";
-            for(int i = 0 ; i < v.size() ; i++){
-                cout<<v[i];
-                if(i < v.size()-1)
-                    cout<<" ";
+        if(positions.size() == 0){
+            cout<<"-1"<<endl;
+        }else{
+            for(vector<int> v: positions){
+                cout<<"[";
+                for(int i = 0 ; i < v.size() ; i++){
+                    cout<<v[i]<<" ";
+                }
+                cout<<"]";
+                cout<<" ";
             }
-            cout<<"]";
-            cout<<" ";
+            cout<<endl;
         }
     }
 }
